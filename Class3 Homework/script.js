@@ -46,7 +46,7 @@ console.log(ages);
 
 
 
-/// second way i solved this problem (idk which one is more correct?!)
+/// second way i solved this problem (idk which one is more correct based on the requirements for the homework?!)
 
 
 function humanAndDogYears(years) {
@@ -71,7 +71,7 @@ console.log(humanAndDogAge);
 
 // ATM function
 
-const moneyAmountInBankAccount = 10000;
+let moneyAmountInBankAccount = 10000;
 function atm(money) {
 
     if (money <= moneyAmountInBankAccount) {
