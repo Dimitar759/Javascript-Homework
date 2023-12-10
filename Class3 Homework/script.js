@@ -26,7 +26,28 @@ let typeUndefined = returningType();
 console.log(typeUndefined);
 
 
+
+
+
+
+
 //a JavaScript function that Calculates your dog's age based on the conversion rate of 1 human year to 7 dog years
+
+function humanAndDogYears(humanYears, dogYears) {
+    let convertingNumber = 7;
+    let dogAge = humanYears * convertingNumber;
+    let humanAge = dogYears / convertingNumber;
+
+    return `The human's age in dog years is ${dogAge} and the dog's age in human years is ${humanAge}`;
+}
+
+let ages = humanAndDogYears(34, 14);
+console.log(ages);
+
+
+
+/// second way i solved this problem (idk which one is more correct?!)
+
 
 function humanAndDogYears(years) {
     let convertingNumber = 7;
@@ -39,29 +60,31 @@ function humanAndDogYears(years) {
 let enterAge = parseFloat(prompt("Enter years:"));
 
 const humanAndDogAge = humanAndDogYears(enterAge);
-console.log(humanAndDogAge)
+console.log(humanAndDogAge);
 
 
 
-/////////////////
 
 
-// function calculateDogYears(yearsToConvert, convertRatio) {
-//     let dogYears = yearsToConvert * convertRatio;
-//     return dogYears;
-// }
 
-// function calculateHumanYears(yearsToConvert, convertRatio) {
-//     let humanYears = yearsToConvert / convertRatio;
-//     return humanYears;
-// }
 
-// let yearsToConvert = parseFloat(prompt("Enter years:"))
 
-// let convertRatio = 7;
-// const finalDogResult = calculateDogYears(yearsToConvert, convertRatio);
+// ATM function
 
-// const finalHumanResult = calculateHumanYears(yearsToConvert, convertRatio);
+let moneyAmountInBankAccount = 10000;
+function atm(money) {
 
-// console.log("In dog years is:", finalDogResult);
-// console.log("In human years is:", finalHumanResult);
+    if (money <= moneyAmountInBankAccount) {
+        moneyAmountInBankAccount -= money;
+        return `You received ${money} dollars and you have ${moneyAmountInBankAccount} dollars left`;
+    } else {
+        return "Not enough money";
+    }
+    
+}
+
+let moneyToWithdraw = parseInt(prompt("Enter money amount to withdraw:"));
+
+let moneyWithdrawn = atm(moneyToWithdraw);
+console.log(moneyWithdrawn);
+
