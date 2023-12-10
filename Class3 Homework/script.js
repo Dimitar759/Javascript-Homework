@@ -71,7 +71,7 @@ console.log(humanAndDogAge);
 
 // ATM function
 
-let moneyAmountInBankAccount = 10000;
+const moneyAmountInBankAccount = 10000;
 function atm(money) {
 
     if (money <= moneyAmountInBankAccount) {
