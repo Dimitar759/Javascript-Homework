@@ -57,7 +57,7 @@ function humanAndDogYears(years) {
     return `The human's age in dog years is ${dogAge} and the dog's age in human years is ${humanAge}`;
 }
 
-let enterAge = parseFloat(prompt("Enter years:"));
+let enterAge = parseFloat(prompt("Enter years (check result in the console):"));
 
 const humanAndDogAge = humanAndDogYears(enterAge);
 console.log(humanAndDogAge);
@@ -83,8 +83,59 @@ function atm(money) {
     
 }
 
-let moneyToWithdraw = parseInt(prompt("Enter money amount to withdraw:"));
+let moneyToWithdraw = parseInt(prompt("Enter money amount to withdraw (check result in the console):"));
 
 let moneyWithdrawn = atm(moneyToWithdraw);
 console.log(moneyWithdrawn);
 
+
+
+
+
+
+
+
+
+//celsius to fahrenheit and reverse
+
+function celsiusToFahrenheit(celsius) {
+    let fahrenheit = celsius * 1.8 + 32;
+    console.log(`${celsius}°C is equal to ${fahrenheit}°F`);
+}
+
+
+function fahrenheitToCelsius(fahrenheit) {
+    let celsius = (5 / 9) * (fahrenheit - 32);
+    console.log(`${fahrenheit}°F is equal to ${celsius}°C`);
+}
+
+celsiusToFahrenheit(20);
+fahrenheitToCelsius(68);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//AGE CALCULATOR
+
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+
+function calculateAge(birthYear) {
+    let currentAge = currentYear - birthYear;
+    return `Your are ${currentAge} years old`;
+}
+
+let myBirthYear= parseInt(prompt("Enter your birth year (check result in the console):"));
+
+let myActualAge = calculateAge(myBirthYear);
+console.log(myActualAge);
