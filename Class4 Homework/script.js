@@ -71,3 +71,23 @@ function validateNumber(numbersToValitade){
 
 
 
+
+// array to one big string
+
+
+function bigString(words){
+
+    let sumOfWords;
+
+    for (let i = 0; i < words.length; i++){
+        sumOfWords+=words[i];
+    }
+
+    console.log(sumOfWords);
+}
+
+let randomWords = ["Hello ", "there ", "students ", "of ", "SEDC ", "!"];
+bigString(randomWords);
+
+
+
