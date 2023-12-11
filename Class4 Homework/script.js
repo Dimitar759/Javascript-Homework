@@ -33,10 +33,21 @@ tellStory(story);
 
 function sumOfNumbers(allNumbers) {
     let sum = 0;
+    let foundInvalidNumber = false;
     for (let i = 0; i < allNumbers.length; i++){
-        sum += allNumbers[i];
+        if (!isNaN(allNumbers[i])) {
+            sum += allNumbers[i];
+        }
+        else{
+             foundInvalidNumber = true;
+        }
     }
-    console.log(sum);
+    if (foundInvalidNumber) {
+        console.log("There is an invalid number");
+    } else {
+        console.log(sum);
+    }
+    
 }
 
 let numbers = [12, 64, 987, 543, 78];
