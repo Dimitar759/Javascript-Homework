@@ -25,7 +25,11 @@ let story = ["Ben", "Happy", "Running"];
 tellStory(story);
 
 
-//Sum of 5 numbers
+
+
+
+
+//Sum of 5 numbers and validating numbers
 
 function sumOfNumbers(allNumbers) {
     let sum = 0;
@@ -37,3 +41,22 @@ function sumOfNumbers(allNumbers) {
 
 let numbers = [12, 64, 987, 543, 78];
 sumOfNumbers(numbers);
+
+
+let numbers2 = [12, 64, 987, 543, "asd"];
+validateNumber(numbers2);
+
+function validateNumber(numbersToValitade){
+    for (let number of numbersToValitade) {
+        if (!isNaN(number)) {
+            console.log(`The number ${number} is valid`);
+        }
+        else {
+            console.log(`The number ${number} is invalid`);
+        }
+    }
+}
+
+
+
+
