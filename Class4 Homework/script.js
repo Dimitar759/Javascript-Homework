@@ -140,4 +140,20 @@ console.log(result);
 
 
 
-//
+//student names
+
+
+function namesAndLastNames(firstNames, lastNames) {
+    let fullNames = [];
+    for (let i = 0; i < firstNames.length; i++){
+        let fullName = `${firstNames[i]} ${lastNames[i]}`;
+        fullNames.push(fullName);
+    }
+    return fullNames;
+}
+
+let studentFirstNames = ["Ben", "Kevin", "Gwen", "Michael", "Lucy"];
+let studentLastNames = ["Tennyson", "Levin", "Stevenson", "Star", "Altman"];
+
+let nameAndLastName = namesAndLastNames(studentFirstNames, studentLastNames);
+console.log(nameAndLastName)
