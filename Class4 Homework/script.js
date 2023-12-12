@@ -97,11 +97,47 @@ bigString(randomWords);
 
 for (let i = 1; i <= 20; i++){
     if (i % 2 === 0) {
-        console.log(i);
-        console.log("\n");
+        console.log(`${i} \n.`);
         
     }
     else {
-        console.log(i + " ");
+        console.log(`${i}  .`);
     }
 }
+
+
+
+
+//Max and min numbers
+
+function findMinAndMax(number) {
+
+    let numbers = [];
+    
+    for (let i = 0; i < number.length; i++){
+        if (!isNaN(number[i])) {
+            numbers.push(number[i]);
+        }
+    }
+
+    if (numbers.length === 0) {
+        return "No numbers found in the array"
+    }
+
+    let maxNumber = Math.max(...numbers);
+    let minNumber = Math.min(...numbers);
+    let sum = maxNumber + minNumber;
+    return {
+        maxNumber,
+        minNumber,
+        sum
+    };
+}
+let arr = [3, 5, 6, 8, 11, "hello", true, null, undefined];
+let result = findMinAndMax(arr);
+console.log(result);
+
+
+
+
+//
