@@ -74,8 +74,6 @@ function validateNumber(numbersToValitade){
 
 // array to one big string
 
-
-
 function bigString(words){
 
     let sumOfWords = '';
@@ -92,3 +90,18 @@ bigString(randomWords);
 
 
 
+
+//Looping structures
+
+//Ne sum siguren dali ova vaka treba??
+
+for (let i = 1; i <= 20; i++){
+    if (i % 2 === 0) {
+        console.log(i);
+        console.log("\n");
+        
+    }
+    else {
+        console.log(i + " ");
+    }
+}
