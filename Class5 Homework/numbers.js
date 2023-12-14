@@ -24,7 +24,7 @@ function printingTheEquation(numbers, sum) {
     }
 
     equation.innerHTML = equationString + ` = ${sum}`;
-    return equation;
+
 }
 
 let numbers = [1, 2, 4, 5, 7, 8, 12, 21];
