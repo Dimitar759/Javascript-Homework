@@ -13,3 +13,29 @@ for (let i = 0; i < allHeaders.length; i++) {
     allHeaders[i].innerText = "Changed header text";
 }
 
+
+
+/////Bonus
+
+let recipeName = prompt("Enter the name of your recipe:");
+
+let ingredients = [];
+
+while (true) {
+    let ingredient = prompt("Enter a food ingredient (or type 'done' to finish):");
+
+    if (ingredient === "done") {
+        break; 
+    } else {
+        ingredients.push(ingredient); 
+    }
+}
+
+let headerElement = document.getElementById("recipeName");
+headerElement.innerText = recipeName;
+
+let listElement = document.getElementById("ingredients");
+
+for (let i = 0; i < ingredients.length; i++){
+    listElement.innerHTML += "<li>" + ingredients[i] + "</li>";
+}
