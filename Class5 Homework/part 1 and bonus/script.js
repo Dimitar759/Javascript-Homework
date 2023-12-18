@@ -19,17 +19,17 @@ for (let i = 0; i < allHeaders.length; i++) {
 
 let recipeName = prompt("Enter the name of your recipe:");
 
+let numberOfIngredients = parseInt(prompt("Enter the number of ingredients for your recipe"));
+
 let ingredients = [];
 
-while (true) {
-    let ingredient = prompt("Enter a food ingredient (or type 'done' to finish):");
+for (let i = 0; i < numberOfIngredients; i++){
+    let foodIngredient = prompt("Add ingredient:");
+    
+    ingredients.push(foodIngredient);
 
-    if (ingredient === "done") {
-        break; 
-    } else {
-        ingredients.push(ingredient); 
-    }
 }
+
 
 let headerElement = document.getElementById("recipeName");
 headerElement.innerText = recipeName;
