@@ -2,6 +2,7 @@ let tableContainer = document.getElementById('tableContainer');
 let createButton = document.getElementById("createTableBtn");
 
 function createTable(rows, columns) {
+    
     let tableContent = '<table border="1">';
     for (let i = 1; i <= rows; i++) {
         tableContent += '<tr>';
@@ -19,5 +20,9 @@ createButton.addEventListener("click", function() {
     let rows = parseInt(document.getElementById('rowsInput').value);
     let columns = parseInt(document.getElementById('columnsInput').value);
 
-    createTable(rows, columns);
+    if (rows > 0 && columns > 0) {
+        createTable(rows, columns);
+    } else {
+        alert('Please input a number higher than 0 for rows and columns!');
+    }
 });
