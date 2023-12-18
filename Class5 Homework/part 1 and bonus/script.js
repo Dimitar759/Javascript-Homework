@@ -23,12 +23,16 @@ let numberOfIngredients = parseInt(prompt("Enter the number of ingredients for y
 
 let ingredients = [];
 
-for (let i = 0; i < numberOfIngredients; i++){
+if (numberOfIngredients > 0) {
+    for (let i = 0; i < numberOfIngredients; i++){
     let foodIngredient = prompt("Add ingredient:");
     
     ingredients.push(foodIngredient);
-
+    }
+} else {
+    alert("Enter a number higher than 0 for the number of ingredients!");
 }
+
 
 
 let headerElement = document.getElementById("recipeName");
