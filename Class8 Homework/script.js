@@ -231,6 +231,7 @@ submitButton.addEventListener("click", function () {
 
     let story = storyTeller(firstName, adjective, profession, age);
     paragraph.innerHTML = story;
+
 });
 
 // kaj mene od koga ke se vcite paragrafot so rezultat od storyto, za 1 sekunda se reload tabot i go snemuva paragrafot?
