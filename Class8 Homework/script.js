@@ -3,6 +3,8 @@ let clearButton = document.getElementById("clearBtn");
 let numOfExcercises = document.getElementById("numOfExcercises");
 let submitButton = document.getElementById("sbmBtnForNumOfEx");
 let exerciseNumberButton = document.getElementById("exerciseNumber");
+let mainThemeElements = document.getElementById('main-theme');
+let darkThemeButton = document.getElementById('darkTheme');
 
 console.log(container);
 
@@ -78,36 +80,71 @@ function ClearHtml(inputElement) {
     inputElement.innerHTML = "";
 }
 
-exerciseNumberButton.addEventListener("click", function () {
+darkThemeButton.addEventListener("mousedown", function () {
+  darkThemeButton.style.backgroundColor = "blue";
+});
+ 
+darkThemeButton.addEventListener("mouseup", function () {
+  darkThemeButton.style.backgroundColor = ""; 
+});
+
+darkThemeButton.addEventListener("click", function () {
+  const currentBackgroundColor = mainThemeElements.style.backgroundColor;
+  const currentColor = mainThemeElements.style.color;
+
+  if (currentBackgroundColor === "white" && currentColor === "black") {
+    mainThemeElements.style.backgroundColor = "black";
+    mainThemeElements.style.color = "white";
+  } else {
+    mainThemeElements.style.backgroundColor = "white";
+    mainThemeElements.style.color = "black";
+  }
+});
+
+///Exercise number button
+exerciseNumberButton.addEventListener("mousedown", function () {
   exerciseNumberButton.style.backgroundColor = "purple";
+});
+ 
+exerciseNumberButton.addEventListener("mouseup", function () {
+  exerciseNumberButton.style.backgroundColor = ""; 
+});
+
+exerciseNumberButton.addEventListener("click", function () {
+  
   let vezbaBroj = numOfExcercises.value;
   FindExerciseByNumber(vezbaBroj,vezbi);
   numOfExcercises.value = "";
-  setTimeout(function () {
-        exerciseNumberButton.style.backgroundColor = "";
-  }, 100)
-  
 
 })
+
+////Clear button
+clearButton.addEventListener("mousedown", function () {
+  clearButton.style.backgroundColor = "red";
+});
+ 
+clearButton.addEventListener("mouseup", function () {
+  clearButton.style.backgroundColor = ""; 
+});
 
 clearButton.addEventListener("click", function () {
-    clearButton.style.backgroundColor = "red";
-    ClearHtml(container);
-    
-    setTimeout(function () {
-        clearButton.style.backgroundColor = "";
-    },100)
-})
+  ClearHtml(container);
+
+});
+
+//////////Submit BUTTON
+submitButton.addEventListener("mousedown", function () {
+  submitButton.style.backgroundColor = "green";
+});
+ 
+submitButton.addEventListener("mouseup", function () {
+  submitButton.style.backgroundColor = ""; 
+});
 
 submitButton.addEventListener("click", function () {
-    submitButton.style.backgroundColor = "green";
     let numberOfExcercises = numOfExcercises.value;
     PrintExcercises(vezbi, numberOfExcercises);
     numOfExcercises.value = "";
-
-    setTimeout(function () {
-        submitButton.style.backgroundColor = "";
-    },100)
 });
 
 //FOR HOMEWORK!!!!!!!!!!!!
