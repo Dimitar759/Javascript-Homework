@@ -1,0 +1,136 @@
+
+body{
+    background-color: grey;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container{
+    display: grid;
+    height: 80vh;
+    width: 30vw;
+    grid-gap: 0;
+    margin: auto;
+    
+    grid-template-areas:'display display display display'
+                        'reset reset delete divide'
+                        'seven eight nine multiply'
+                        'four five six minus'
+                        'one two three plus'
+                        'dot zero zero equals';
+}
+
+#displayScreen{
+    background-color: black;
+    color: white;
+    grid-area: display ;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 30px;
+    border: 1px solid black;
+    
+}
+.button{
+    font-size: 30px;
+    border: 1px solid black;
+}
+.button1{
+    grid-area: one;
+}
+.button2 {
+    grid-area: two;
+}
+.button3 {
+    grid-area: three;
+}
+.button4 {
+    grid-area: four;
+}
+.button5 {
+    grid-area: five;
+}
+
+.button6 {
+    grid-area: six;
+}
+.button7 {
+    grid-area: seven;
+}
+.button8 {
+    grid-area: eight;
+}
+
+.button9 {
+    grid-area: nine;
+}
+
+.buttonReset {
+    grid-area: reset;
+}
+
+.buttonDelete {
+    grid-area: delete;
+}
+
+.buttonDivide {
+    grid-area: divide;
+}
+.buttonMultiply {
+    grid-area: multiply;
+}
+
+.buttonMinus {
+    grid-area: minus;
+}
+.buttonPlus {
+    grid-area: plus;
+}
+.buttonDot {
+    grid-area: dot;
+}
+.button0{
+    grid-area: zero;
+}
+
+.buttonEquals {
+    grid-area: equals;
+}
+.orange{
+    background-color: orange;
+    color: white;
+}
+
+@media screen and (max-width: 600px) and (max-height: 1000px) {
+    body {
+        background-color: lightgrey;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #container {
+        height: 60vh;
+        width: 80vw;
+
+    }
+
+
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    body {
+        background-color: grey;
+    }
+
+    #container {
+        height: 70vh;
+        width: 60vw;
+
+    }
+
+
+}
