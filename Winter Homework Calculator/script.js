@@ -22,36 +22,58 @@ let buttonEquals = document.getElementById("buttonEquals");
 
 let displayScreen = document.getElementById("displayScreen");
 
+let maxNumberToEnter = 999999999;
 
 button1.addEventListener("click", function () {
-    displayScreen.textContent += button1.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button1.textContent;
+    }
+    
 })
 button2.addEventListener("click", function () {
-    displayScreen.textContent += button2.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button2.textContent;
+    }
 })
 button3.addEventListener("click", function () {
-    displayScreen.textContent += button3.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button3.textContent;
+    }
 })
 button4.addEventListener("click", function () {
-    displayScreen.textContent += button4.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button4.textContent;
+    }
 })
 button5.addEventListener("click", function () {
-    displayScreen.textContent += button5.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button5.textContent;
+    }
 })
 button6.addEventListener("click", function () {
-    displayScreen.textContent += button6.textContent;
+   if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button6.textContent;
+    }
 })
 button7.addEventListener("click", function () {
-    displayScreen.textContent += button7.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button7.textContent;
+    }
 })
 button8.addEventListener("click", function () {
-    displayScreen.textContent += button8.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button8.textContent;
+    }
 })
 button9.addEventListener("click", function () {
-    displayScreen.textContent += button9.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button9.textContent;
+    }
 })
 button0.addEventListener("click", function () {
-    displayScreen.textContent += button0.textContent;
+    if (displayScreen.textContent <= maxNumberToEnter) {
+        displayScreen.textContent += button0.textContent;
+    }
 })
 
 buttonReset.addEventListener("click", function () {
@@ -65,3 +87,67 @@ buttonDelete.addEventListener("click", function () {
     }
 })
 
+buttonDot.addEventListener("click", function () {
+    displayScreen.textContent += ".";
+})
+
+let storedNumber = null; 
+
+buttonDivide.addEventListener("click", function () {
+    storedNumber = parseFloat(displayScreen.textContent); 
+    displayScreen.textContent = ""; 
+    operator = "/";
+    
+    
+});
+
+buttonPlus.addEventListener("click", function () {
+    storedNumber = parseFloat(displayScreen.textContent);
+    displayScreen.textContent = "";
+    operator = "+";
+});
+
+buttonMinus.addEventListener("click", function () {
+    storedNumber = parseFloat(displayScreen.textContent);
+    displayScreen.textContent = "";
+    operator = "-";
+});
+
+buttonMultiply.addEventListener("click", function () {
+    storedNumber = parseFloat(displayScreen.textContent);
+    displayScreen.textContent = "";
+    operator = "*";
+});
+
+buttonEquals.addEventListener("click", function () {
+    const currentNumber = parseFloat(displayScreen.textContent);
+    let result = null;
+
+    if (operator === "+") {
+        if (currentNumber !== 0) {
+            result = storedNumber + currentNumber;
+        } else {
+            result = "Error: Cannot divide by zero";
+        }
+    } else if (operator === "-") {
+       if (currentNumber !== 0) {
+            result = storedNumber - currentNumber;
+        } else {
+            result = "Error: Cannot divide by zero";
+        }
+    } else if (operator === "*") {
+        if (currentNumber !== 0) {
+            result = storedNumber * currentNumber;
+        } else {
+            result = "Error: Cannot divide by zero";
+        }
+    } else if (operator === "/") {
+        if (currentNumber !== 0) {
+            result = storedNumber / currentNumber;
+        } else {
+            result = "Error: Cannot divide by zero";
+        }
+    }
+
+    displayScreen.textContent = result;
+});

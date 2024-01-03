@@ -12,9 +12,9 @@ body{
     display: grid;
     height: 80vh;
     width: 30vw;
-    grid-gap: 0;
+    grid-gap: none;
     margin: auto;
-    
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas:'display display display display'
                         'reset reset delete divide'
                         'seven eight nine multiply'
@@ -30,13 +30,17 @@ body{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 30px;
+    font-size: xx-large;
     border: 1px solid black;
-    
+    padding: 5% 1%;
 }
 .button{
     font-size: 30px;
     border: 1px solid black;
+}
+
+.button:hover {
+    cursor: pointer;
 }
 .button1{
     grid-area: one;
