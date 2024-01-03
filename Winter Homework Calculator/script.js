@@ -88,17 +88,26 @@ buttonDelete.addEventListener("click", function () {
 })
 
 buttonDot.addEventListener("click", function () {
-    displayScreen.textContent += ".";
+    let displayContent = displayScreen.textContent;
+    let lastDigit = displayContent[displayContent.length - 1];
+
+    if (displayContent === "") {
+        displayScreen.textContent += 'Enter a number first';
+    } else if (lastDigit === ".") {
+        alert("Already a decimal point - Add a number before adding another dot");
+    } else {
+        displayScreen.textContent += ".";
+    }
+    
 })
 
 let storedNumber = null; 
+let operator = null; 
 
 buttonDivide.addEventListener("click", function () {
     storedNumber = parseFloat(displayScreen.textContent); 
     displayScreen.textContent = ""; 
     operator = "/";
-    
-    
 });
 
 buttonPlus.addEventListener("click", function () {
@@ -124,30 +133,24 @@ buttonEquals.addEventListener("click", function () {
     let result = null;
 
     if (operator === "+") {
-        if (currentNumber !== 0) {
-            result = storedNumber + currentNumber;
-        } else {
-            result = "Error: Cannot divide by zero";
-        }
+    
+        result = storedNumber + currentNumber;
+       
     } else if (operator === "-") {
-       if (currentNumber !== 0) {
-            result = storedNumber - currentNumber;
-        } else {
-            result = "Error: Cannot divide by zero";
-        }
+
+        result = storedNumber - currentNumber;
+       
     } else if (operator === "*") {
-        if (currentNumber !== 0) {
-            result = storedNumber * currentNumber;
-        } else {
-            result = "Error: Cannot divide by zero";
-        }
+
+        result = storedNumber * currentNumber;
+        
     } else if (operator === "/") {
+
         if (currentNumber !== 0) {
             result = storedNumber / currentNumber;
         } else {
             result = "Error: Cannot divide by zero";
         }
     }
-
     displayScreen.textContent = result;
 });
