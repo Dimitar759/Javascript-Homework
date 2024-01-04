@@ -146,9 +146,9 @@ buttonEquals.addEventListener("click", function () {
         
     } else if (operator === "/") {
 
-        if (currentNumber !== 0) {
+        if (currentNumber !== 0 && storedNumber !== 0) {
             result = storedNumber / currentNumber;
-        } else {
+        } else{
             result = "Error: Cannot divide by zero";
         }
     }
