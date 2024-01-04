@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="container">
-        <h1>Hangman</h1>
+        <h1>HANGMAN</h1>
         <div id="choosing-topic">
             <br>
             <p>Choose a topic!</p>
@@ -17,7 +17,7 @@
             <button id="sports">Sports</button>
         </div>
         <br>
-        <div class="input-container">
+        <div class="input-container" id="input-container">
             <button class="letter-button">A</button>
             <button class="letter-button">B</button>
             <button class="letter-button">C</button>
@@ -44,10 +44,18 @@
             <button class="letter-button">X</button>
             <button class="letter-button">Y</button>
             <button class="letter-button">Z</button>
-            <BR></BR>
-            <input type="text" id="guessInput" placeholder="Enter a letter">
             <br>
-            <button id="guessButton">Guess</button>
+            <p id="info-paragraph"></p>
+            <br><br>
+            <div class="manDrawing">
+
+            </div>
+            <br>
+            <button id="hint" class="btn">Hint</button>
+            <button id="playAgain" class="btn">PLay Again</button>
+            <br>
+            <p id="hint"></p>
+
         </div>
         
     </div>

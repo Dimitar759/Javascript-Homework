@@ -1,7 +1,46 @@
+*{
+    background-color: rgb(235, 235, 55);
+    color: white;
+}
 #container{
     text-align: center;
+
 }
 
 .input-container{
     display: none;
+}
+
+p{
+    font-size: large;
+}
+button{
+    background-color: rgb(235, 235, 55);
+    color: white;
+    border-color: white;
+    font-size: larger;
+    padding: 20px 20px;
+    
+}
+
+.letter-button{
+    background-color: white;
+        color: rgb(235, 235, 55);
+        border-color: white;
+        font-size: larger;
+    padding: 5px 5px;
+}
+
+.btn{
+    width: 200px;
+    height: 70px;
+    margin: 0 10px;
+}
+
+.manDrawing{
+
+    margin: 10px auto;
+    border: 3px dotted white;
+    width: 300px;
+    height: 200px;
 }
