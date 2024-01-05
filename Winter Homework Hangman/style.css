@@ -1,5 +1,5 @@
 *{
-    background-color: rgb(235, 235, 55);
+    background-color: rgb(231, 231, 66);
     color: white;
 }
 #container{
@@ -12,10 +12,17 @@
 }
 
 p{
-    font-size: large;
+    font-size: x-large;
 }
+
+#hintParagraph{
+    background-color: red;
+}
+
+
+
 button{
-    background-color: rgb(235, 235, 55);
+    background-color: rgb(231, 231, 66);
     color: white;
     border-color: white;
     font-size: larger;
@@ -25,10 +32,12 @@ button{
 
 .letter-button{
     background-color: white;
-        color: rgb(235, 235, 55);
+        color: rgb(231, 231, 66);
         border-color: white;
         font-size: larger;
     padding: 5px 5px;
+    width: 35px;
+    height: 35px;
 }
 
 .btn{
