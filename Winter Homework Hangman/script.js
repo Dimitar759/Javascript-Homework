@@ -4,6 +4,7 @@ const shows = ["Game Of Thrones", "Friends", "Breaking Bad", "The Office"]
 
 const sports = ["Football", "Basketball", "Boxing", "Cricket", "Baseball"]
 
+
 let moviesButton = document.getElementById("movies");
 let showsButton = document.getElementById("shows");
 let sportsButton = document.getElementById("sports");
@@ -16,7 +17,7 @@ let infoParagraph = document.getElementById("info-paragraph");
 let correctLettersGuessed = document.getElementById("letters");
 let hintParagraph = document.getElementById("hintParagraph");
 
-const letterContainer = document.querySelector('.letter-container');
+
 
 moviesButton.addEventListener("click", function () {
     topicDiv.style.display = "none";
@@ -48,26 +49,6 @@ moviesButton.addEventListener("click", function () {
         hintButton.style.cursor = "not-allowed";
     })
 
-    letterContainer.addEventListener('click', function(event) {
-    const clickedButton = event.target;
-    if (clickedButton.classList.contains('letter-button')) {
-        const letter = clickedButton.dataset.letter;
-        checkAndReplace(letter);
-    }
-    
-    });
-
-    function checkAndReplace(letter) {
-    let displayWord = correctLettersGuessed.textContent.split(' ');
-
-    for (let i = 0; i < chosenWord.length; i++) {
-        if (chosenWord[i].toUpperCase() === letter.toUpperCase()) {
-            displayWord[i] = letter.toUpperCase();
-        }
-    }
-
-    correctLettersGuessed.textContent = displayWord.join(' ');
-}
 
 })
 
@@ -79,7 +60,7 @@ showsButton.addEventListener("click", function () {
 
     for (let i = 0; i < chosenWord.length; i++) {
         if (chosenWord[i] === ' ') {
-            correctLettersGuessed.innerHTML += "&nbsp;&nbsp;"; // Insert spaces for each word gap
+            correctLettersGuessed.innerHTML += "&nbsp;&nbsp;"; 
         } else {
             correctLettersGuessed.innerHTML += "_ ";
         }
@@ -110,7 +91,7 @@ sportsButton.addEventListener("click", function () {
 
     for (let i = 0; i < chosenWord.length; i++) {
         if (chosenWord[i] === ' ') {
-            correctLettersGuessed.innerHTML += "&nbsp;&nbsp;"; // Insert spaces for each word gap
+            correctLettersGuessed.innerHTML += "&nbsp;&nbsp;"; 
         } else {
             correctLettersGuessed.innerHTML += "_ ";
         }
@@ -139,21 +120,4 @@ playAgainButton.addEventListener("click", function () {
     location.reload();
 })
 
-letterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-        const guessedLetter = button.textContent;
-        let newLetters = '';
 
-        for (let i = 0; i < chosenWord.length; i++) {
-            if (chosenWord[i].toLowerCase() === guessedLetter.toLowerCase()) {
-                newLetters += `${chosenWord[i]} `;
-            } else if (correctLettersGuessed.textContent[i * 2] !== '_') {
-                newLetters += `${correctLettersGuessed.textContent[i * 2]} `;
-            } else {
-                newLetters += '_ ';
-            }
-        }
-
-        correctLettersGuessed.textContent = newLetters;
-    });
-});
