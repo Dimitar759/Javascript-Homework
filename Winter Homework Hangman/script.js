@@ -50,6 +50,7 @@ let buttons = function () {
 
 function handleLetterClick(letter) {
     let letterFound = false;
+    let letterButtons = document.getElementsByClassName('letterButton');
 
     for (let i = 0; i < chosenWord.length; i++) {
         if (chosenWord[i].toUpperCase() === letter) {
@@ -57,6 +58,7 @@ function handleLetterClick(letter) {
             correctLettersGuessed.textContent = correctLettersGuessed.textContent.substring(0, letterPosition) + letter + correctLettersGuessed.textContent.substring(letterPosition + 1);
             letterFound = true;
         }
+        
     }
 
     if (!letterFound) {
@@ -65,19 +67,34 @@ function handleLetterClick(letter) {
     }
 
     if (wrongGuesses === maxGuesses) {
-        counterWrongGuesses.textContent = `You lose!`;
-        disableAllLetterButtons();
+        counterWrongGuesses.textContent = `You lose! The word was ${chosenWord}!`;
+        for (let i = 0; i < letterButtons.length; i++) {
+            letterButtons[i].disabled = true;
+        }
     }
 
-    
-}
+    let correctCount = 0;
+    for (let i = 0; i < chosenWord.length; i++) {
+        if (chosenWord[i] !== ' ' && correctLettersGuessed.textContent[i * 2] === chosenWord[i].toUpperCase()) {
+            correctCount++;
+        }
+    }
 
-function disableAllLetterButtons() {
-    let letterButtons = document.getElementsByClassName('letterButton');
-    for (let i = 0; i < letterButtons.length; i++) {
-        letterButtons[i].disabled = true;
+    let wordLength = 0;
+    for (let i = 0; i < chosenWord.length; i++) {
+        if (chosenWord[i] !== ' ') {
+            wordLength++;
+        }
+    }
+
+    if (correctCount === wordLength) {
+        counterWrongGuesses.textContent = `You win!`;
+        for (let i = 0; i < letterButtons.length; i++) {
+            letterButtons[i].disabled = true;
+        }
     }
 }
+
 
 moviesButton.addEventListener("click", function () {
     buttons();
