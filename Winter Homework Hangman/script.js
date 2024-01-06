@@ -4,24 +4,65 @@ const shows = ["Game Of Thrones", "Friends", "Breaking Bad", "The Office"]
 
 const sports = ["Football", "Basketball", "Boxing", "Cricket", "Baseball"]
 
+let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 let moviesButton = document.getElementById("movies");
 let showsButton = document.getElementById("shows");
 let sportsButton = document.getElementById("sports");
 let hintButton = document.getElementById("hint");
 let playAgainButton = document.getElementById("playAgain");
+let chosenWord = '';
 
 let topicDiv = document.getElementById("choosing-topic"); 
 let inputContainer = document.getElementById("input-container"); 
 let infoParagraph = document.getElementById("info-paragraph"); 
-let correctLettersGuessed = document.getElementById("letters");
+let correctLettersGuessed = document.getElementById("lettersCorrect");
 let hintParagraph = document.getElementById("hintParagraph");
 
+let buttons = function () {
+    let myButtons = document.getElementById('buttons');
 
+    for (var i = 0; i < alphabet.length; i++) {
+    var letterButton = document.createElement('button');
+
+    letterButton.style.backgroundColor = "white";
+    letterButton.style.color = "rgb(231, 231, 66)";
+    letterButton.style.borderColor= "white";
+    letterButton.style.fontSize = "larger";
+    letterButton.style.padding = "5px 5px";
+    letterButton.style.width =  "35px";
+    letterButton.style.height = "35px";
+    letterButton.style.marginRight = "5px";
+    letterButton.textContent = alphabet[i];
+    letterButton.addEventListener('click', function() {
+        handleLetterClick(this.textContent.toUpperCase());
+    });
+    myButtons.appendChild(letterButton);
+}
+}
+
+function handleLetterClick(letter) {
+    let lettersGuessed = 0;
+
+    // Check if the chosen word contains the clicked letter
+    for (let i = 0; i < chosenWord.length; i++) {
+        if (chosenWord[i].toUpperCase() === letter) {
+            let letterPosition = i * 2;
+            correctLettersGuessed.textContent = correctLettersGuessed.textContent.substring(0, letterPosition) + letter + correctLettersGuessed.textContent.substring(letterPosition + 1);
+            lettersGuessed++;
+        }
+    }
+
+    // Add your hangman logic for incorrect guesses here if needed
+    if (lettersGuessed === 0) {
+        
+    }
+}
 
 moviesButton.addEventListener("click", function () {
+    buttons();
     topicDiv.style.display = "none";
-    let chosenWord = movies[Math.floor(Math.random() * movies.length)];
+    chosenWord = movies[Math.floor(Math.random() * movies.length)];
     infoParagraph.innerHTML += `The chosen category is Movies `
     inputContainer.classList.remove("input-container");
 
@@ -53,8 +94,9 @@ moviesButton.addEventListener("click", function () {
 })
 
 showsButton.addEventListener("click", function () {
+    buttons();
     topicDiv.style.display = "none";
-    let chosenWord = shows[Math.floor(Math.random() * shows.length)];
+    chosenWord = shows[Math.floor(Math.random() * shows.length)];
     infoParagraph.innerHTML += `The chosen category is Shows `
     inputContainer.classList.remove("input-container");
 
@@ -84,8 +126,9 @@ showsButton.addEventListener("click", function () {
 })
 
 sportsButton.addEventListener("click", function () {
+    buttons();
     topicDiv.style.display = "none";
-    let chosenWord = sports[Math.floor(Math.random() * sports.length)];
+    chosenWord = sports[Math.floor(Math.random() * sports.length)];
     infoParagraph.innerHTML += `The chosen category is Sports `
     inputContainer.classList.remove("input-container");
 
@@ -119,5 +162,3 @@ sportsButton.addEventListener("click", function () {
 playAgainButton.addEventListener("click", function () {
     location.reload();
 })
-
-

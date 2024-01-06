@@ -30,15 +30,6 @@ button{
     
 }
 
-.letter-button{
-    background-color: white;
-        color: rgb(231, 231, 66);
-        border-color: white;
-        font-size: larger;
-    padding: 5px 5px;
-    width: 35px;
-    height: 35px;
-}
 
 .btn{
     width: 200px;
