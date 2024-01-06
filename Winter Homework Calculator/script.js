@@ -134,23 +134,39 @@ buttonEquals.addEventListener("click", function () {
 
     if (operator === "+") {
     
-        result = storedNumber + currentNumber;
-       
+        if (isNaN(currentNumber)) {
+            result = "Error: enter a second number";
+        } else {
+            result = storedNumber + currentNumber;
+        }
+        
     } else if (operator === "-") {
 
-        result = storedNumber - currentNumber;
+        if (isNaN(currentNumber)) {
+            result = "Error: enter a second number";
+        } else {
+            result = storedNumber - currentNumber;
+        }
+        
        
     } else if (operator === "*") {
-
-        result = storedNumber * currentNumber;
+        
+        if (isNaN(currentNumber)) {
+            result = "Error: enter a second number";
+        } else {
+            result = storedNumber * currentNumber;
+        }
         
     } else if (operator === "/") {
 
-        if (currentNumber !== 0 && storedNumber !== 0) {
+        if (isNaN(currentNumber)) {
+            result = "Error: enter a second number";
+        }else if (currentNumber !== 0 && storedNumber !== 0) {
             result = storedNumber / currentNumber;
         } else{
             result = "Error: Cannot divide by zero";
         }
-    }
+    } 
+    
     displayScreen.textContent = result;
 });
