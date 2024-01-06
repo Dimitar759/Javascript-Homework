@@ -1,21 +1,9 @@
 const container = document.getElementById("container");
-
-let button1 = document.getElementById("button1");
-let button2 = document.getElementById("button2");
-let button3 = document.getElementById("button3");
-let button4 = document.getElementById("button4");
-let button5 = document.getElementById("button5");
-let button6 = document.getElementById("button6");
-let button7 = document.getElementById("button7");
-let button8 = document.getElementById("button8");
-let button9 = document.getElementById("button9");
+const numberButtons = document.querySelectorAll(".number");
+let  operatorButtons = document.querySelectorAll(".operation");
 
 let buttonReset = document.getElementById("buttonReset");
 let buttonDelete = document.getElementById("buttonDelete");
-let buttonDivide = document.getElementById("buttonDivide");
-let buttonMultiply = document.getElementById("buttonMultiply");
-let buttonMinus = document.getElementById("buttonMinus");
-let buttonPlus = document.getElementById("buttonPlus");
 let buttonDot = document.getElementById("buttonDot");
 let button0 = document.getElementById("button0");
 let buttonEquals = document.getElementById("buttonEquals");
@@ -24,57 +12,18 @@ let displayScreen = document.getElementById("displayScreen");
 
 let maxNumberToEnter = 999999999;
 
-button1.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button1.textContent;
+function numberButtonClick(button) {
+    if (displayScreen.textContent.length < maxNumberToEnter) {
+        displayScreen.textContent += button.textContent;
     }
-    
-})
-button2.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button2.textContent;
-    }
-})
-button3.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button3.textContent;
-    }
-})
-button4.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button4.textContent;
-    }
-})
-button5.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button5.textContent;
-    }
-})
-button6.addEventListener("click", function () {
-   if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button6.textContent;
-    }
-})
-button7.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button7.textContent;
-    }
-})
-button8.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button8.textContent;
-    }
-})
-button9.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button9.textContent;
-    }
-})
-button0.addEventListener("click", function () {
-    if (displayScreen.textContent <= maxNumberToEnter) {
-        displayScreen.textContent += button0.textContent;
-    }
-})
+}
+
+numberButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        numberButtonClick(button);
+    });
+});
+
 
 buttonReset.addEventListener("click", function () {
     displayScreen.textContent = "";
@@ -93,8 +42,12 @@ buttonDot.addEventListener("click", function () {
 
     if (displayContent === "") {
         displayScreen.textContent += 'Enter a number first';
+        setTimeout(function() {
+            displayScreen.textContent = ""; // ova go staviv tuka da se gasi posle 2 sekundi zatoa shto user ke mozhe posle tekstot da pisuva  brojki bez predhodno da otide C ili delete! - zatoa vaka broevite so ke gi pise u tie sekundi posle erorot ke se izbrisat so nego
+        }, 2000);
     } else if (lastDigit === ".") {
         alert("Already a decimal point - Add a number before adding another dot");
+        displayScreen.textContent = "";
     } else {
         displayScreen.textContent += ".";
     }
@@ -104,28 +57,22 @@ buttonDot.addEventListener("click", function () {
 let storedNumber = null; 
 let operator = null; 
 
-buttonDivide.addEventListener("click", function () {
+function operationButtonClick(operationButton) {
     storedNumber = parseFloat(displayScreen.textContent); 
     displayScreen.textContent = ""; 
-    operator = "/";
-});
+    if (operationButton.textContent === "+" || operationButton.textContent === "-") {
+        operator = operationButton.textContent;
+    } else if (operationButton.textContent === "x" ) {  //za mnozhenje imam posebni if-ovi zatoa shto simbolot so se pretstavuva za mnozhenje e razlichen na ekran za userot a razlichen treba da e za da se mnozhat broevite
+        operator = "*";
+    }else if (operationButton.textContent === "÷" ) {  //za delenje imam posebni if-ovi zatoa shto simbolot so se pretstavuva za delenje e razlichen na ekran za userot a razlichen treba da e za da se delat broevite
+        operator = "/";
+    }  
+}
 
-buttonPlus.addEventListener("click", function () {
-    storedNumber = parseFloat(displayScreen.textContent);
-    displayScreen.textContent = "";
-    operator = "+";
-});
-
-buttonMinus.addEventListener("click", function () {
-    storedNumber = parseFloat(displayScreen.textContent);
-    displayScreen.textContent = "";
-    operator = "-";
-});
-
-buttonMultiply.addEventListener("click", function () {
-    storedNumber = parseFloat(displayScreen.textContent);
-    displayScreen.textContent = "";
-    operator = "*";
+operatorButtons.forEach(function(operationButton) {
+    operationButton.addEventListener("click", function() {
+        operationButtonClick(operationButton);
+    });
 });
 
 buttonEquals.addEventListener("click", function () {
