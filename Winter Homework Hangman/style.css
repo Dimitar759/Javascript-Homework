@@ -1,6 +1,6 @@
-*{
+body{
     background-color: rgb(231, 231, 66);
-    color: white;
+
 }
 #container{
     text-align: center;
@@ -11,8 +11,12 @@
     display: none;
 }
 
+h1{
+    color: white;
+}
 p{
     font-size: x-large;
+    color: white;
 }
 
 #hintParagraph{
@@ -37,10 +41,62 @@ button{
     margin: 0 10px;
 }
 
-.manDrawing{
-
+.poleContainer{
+    position: relative;
     margin: 10px auto;
     border: 3px dotted white;
     width: 300px;
     height: 200px;
+    
+}
+
+img{
+    width: 300px;
+    height: 200px;
+    z-index: 0;
+}
+
+.body-part{
+    display: none;
+}
+.head{
+    position: absolute;
+    left: 52.2%;
+    top: 21%;
+    font-size: 30px;
+}
+
+.body {
+    position: absolute;
+    left: 54.6%;
+    top: 30%;
+    font-size: 40px;
+}
+
+.left.arm {
+    position: absolute;
+    left: 52%;
+    top: 31%;
+    font-size: 40px;
+}
+
+.right.arm {
+    position: absolute;
+    left: 56%;
+    top: 31%;
+    font-size: 40px;
+}
+
+.right.leg {
+    position: absolute;
+    left: 56%;
+    top: 48%;
+    font-size: 40px;
+}
+
+.left.leg {
+    position: absolute;
+    left: 52%;
+    top: 48%;
+    font-size: 40px;
 }

@@ -11,6 +11,8 @@ let showsButton = document.getElementById("shows");
 let sportsButton = document.getElementById("sports");
 let hintButton = document.getElementById("hint");
 let playAgainButton = document.getElementById("playAgain");
+let hangman = document.getElementById("poleContainer");
+let hangmanParts = document.querySelectorAll(".body-part");
 let chosenWord = '';
 let maxGuesses = 6;
 
@@ -64,6 +66,11 @@ function handleLetterClick(letter) {
     if (!letterFound) {
         wrongGuesses++;
         counterWrongGuesses.textContent = `${wrongGuesses} wrong guesses out of ${maxGuesses}!`;
+        for (let i = 0; i < hangmanParts.length; i++) {
+        if (i < wrongGuesses) {
+            hangmanParts[i].classList.remove("body-part");
+        }
+    }
     }
 
     if (wrongGuesses === maxGuesses) {
