@@ -27,7 +27,6 @@ let wrongGuesses = 0;
 
 let buttons = function () {
     
-    let guesses = 0;
     for (let i = 0; i < alphabet.length; i++) {
         let letterButton = document.createElement('button');
 

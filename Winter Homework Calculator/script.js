@@ -56,9 +56,12 @@ buttonDot.addEventListener("click", function () {
 
 let storedNumber = null; 
 let operator = null; 
+let result = null;
 
 function operationButtonClick(operationButton) {
-    storedNumber = parseFloat(displayScreen.textContent); 
+    
+    storedNumber = parseFloat(displayScreen.textContent);
+    
     displayScreen.textContent = ""; 
     if (operationButton.textContent === "+" || operationButton.textContent === "-") {
         operator = operationButton.textContent;
@@ -77,7 +80,7 @@ operatorButtons.forEach(function(operationButton) {
 
 buttonEquals.addEventListener("click", function () {
     const currentNumber = parseFloat(displayScreen.textContent);
-    let result = null;
+    
 
     if (operator === "+") {
     
