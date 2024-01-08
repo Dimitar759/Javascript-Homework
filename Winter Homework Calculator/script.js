@@ -36,7 +36,7 @@ function performOperation(op, num1, num2) {
     } else if (op === "*") {
         return num1 * num2;
     } else if (op === "/") {
-        if (num2 !== 0 || num1 !== 0) {
+        if (num2 !== 0 && num1 !== 0) {
             return num1 / num2;
         } else {
             return "Error: Cannot divide by zero";
