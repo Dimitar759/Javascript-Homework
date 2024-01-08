@@ -1,40 +1,101 @@
-const container = document.getElementById("container");
-const numberButtons = document.querySelectorAll(".number");
-let  operatorButtons = document.querySelectorAll(".operation");
-
+let displayScreen = document.getElementById("displayScreen");
+let buttonDivide = document.getElementById("buttonDivide");
+let buttonPlus = document.getElementById("buttonPlus");
+let buttonMinus = document.getElementById("buttonMinus");
+let buttonMultiply = document.getElementById("buttonMultiply");
+let buttonEquals = document.getElementById("buttonEquals");
 let buttonReset = document.getElementById("buttonReset");
 let buttonDelete = document.getElementById("buttonDelete");
-let buttonDot = document.getElementById("buttonDot");
-let button0 = document.getElementById("button0");
-let buttonEquals = document.getElementById("buttonEquals");
+let numbers = document.querySelectorAll(".number");
+let buttonDot = document.getElementById("buttonDot")
 
-let displayScreen = document.getElementById("displayScreen");
 
-let maxNumberToEnter = 999999999;
+let storedNumber = null;
+let operator = null;
+let result = null; 
 
-function numberButtonClick(button) {
-    if (displayScreen.textContent.length < maxNumberToEnter) {
-        displayScreen.textContent += button.textContent;
+function applyOperation(newOperator) {
+    const currentNumber = parseFloat(displayScreen.textContent);
+
+    if (storedNumber === null) {
+        storedNumber = currentNumber;
+        result = storedNumber;
+    } else {
+        result = performOperation(operator, result, currentNumber);
+    }
+
+    displayScreen.textContent = "";
+    operator = newOperator;
+}
+
+function performOperation(op, num1, num2) {
+    if (op === "+") {
+        return num1 + num2;
+    } else if (op === "-") {
+        return num1 - num2;
+    } else if (op === "*") {
+        return num1 * num2;
+    } else if (op === "/") {
+        if (num2 !== 0) {
+            return num1 / num2;
+        } else {
+            return "Error: Cannot divide by zero";
+        }
     }
 }
 
-numberButtons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        numberButtonClick(button);
-    });
+function resetCalculator() {
+    storedNumber = null;
+    operator = null;
+    result = null;
+    displayScreen.textContent = "";
+}
+
+buttonDivide.addEventListener("click", function () {
+    applyOperation("/");
 });
 
+buttonPlus.addEventListener("click", function () {
+    applyOperation("+");
+});
+
+buttonMinus.addEventListener("click", function () {
+    applyOperation("-");
+});
+
+buttonMultiply.addEventListener("click", function () {
+    applyOperation("*");
+});
+
+buttonEquals.addEventListener("click", function () {
+    const currentNumber = parseFloat(displayScreen.textContent);
+
+    if (operator !== null) {
+        result = performOperation(operator, result, currentNumber);
+        displayScreen.textContent = result;
+        storedNumber = null;
+        operator = null;
+    }
+});
 
 buttonReset.addEventListener("click", function () {
-    displayScreen.textContent = "";
-})
+    resetCalculator();
+});
 
 buttonDelete.addEventListener("click", function () {
     let currentText = displayScreen.textContent;
     if (currentText.length > 0) {
         displayScreen.textContent = currentText.slice(0, -1);
     }
-})
+});
+
+numbers.forEach(function(button) {
+    button.addEventListener("click", function () {
+        if (displayScreen.textContent.length <= 9) {
+            displayScreen.textContent += button.textContent;
+        }
+    });
+});
 
 buttonDot.addEventListener("click", function () {
     let displayContent = displayScreen.textContent;
@@ -42,81 +103,9 @@ buttonDot.addEventListener("click", function () {
 
     if (displayContent === "") {
         displayScreen.textContent += 'Enter a number first';
-        setTimeout(function() {
-            displayScreen.textContent = ""; // ova go staviv tuka da se gasi posle 2 sekundi zatoa shto user ke mozhe posle tekstot da pisuva  brojki bez predhodno da otide C ili delete! - zatoa vaka broevite so ke gi pise u tie sekundi posle erorot ke se izbrisat so nego
-        }, 2000);
     } else if (lastDigit === ".") {
         alert("Already a decimal point - Add a number before adding another dot");
-        displayScreen.textContent = "";
     } else {
         displayScreen.textContent += ".";
     }
-    
-})
-
-let storedNumber = null; 
-let operator = null; 
-let result = null;
-
-function operationButtonClick(operationButton) {
-    
-    storedNumber = parseFloat(displayScreen.textContent);
-    
-    displayScreen.textContent = ""; 
-    if (operationButton.textContent === "+" || operationButton.textContent === "-") {
-        operator = operationButton.textContent;
-    } else if (operationButton.textContent === "x" ) {  //za mnozhenje imam posebni if-ovi zatoa shto simbolot so se pretstavuva za mnozhenje e razlichen na ekran za userot a razlichen treba da e za da se mnozhat broevite
-        operator = "*";
-    }else if (operationButton.textContent === "÷" ) {  //za delenje imam posebni if-ovi zatoa shto simbolot so se pretstavuva za delenje e razlichen na ekran za userot a razlichen treba da e za da se delat broevite
-        operator = "/";
-    }  
-}
-
-operatorButtons.forEach(function(operationButton) {
-    operationButton.addEventListener("click", function() {
-        operationButtonClick(operationButton);
-    });
-});
-
-buttonEquals.addEventListener("click", function () {
-    const currentNumber = parseFloat(displayScreen.textContent);
-    
-
-    if (operator === "+") {
-    
-        if (isNaN(currentNumber)) {
-            result = "Error: enter a second number";
-        } else {
-            result = storedNumber + currentNumber;
-        }
-        
-    } else if (operator === "-") {
-
-        if (isNaN(currentNumber)) {
-            result = "Error: enter a second number";
-        } else {
-            result = storedNumber - currentNumber;
-        }
-        
-       
-    } else if (operator === "*") {
-        
-        if (isNaN(currentNumber)) {
-            result = "Error: enter a second number";
-        } else {
-            result = storedNumber * currentNumber;
-        }
-        
-    } else if (operator === "/") {
-
-        if (isNaN(currentNumber)) {
-            result = "Error: enter a second number";
-        }else if (currentNumber !== 0 && storedNumber !== 0) {
-            result = storedNumber / currentNumber;
-        } else{
-            result = "Error: Cannot divide by zero";
-        }
-    } 
-    
-    displayScreen.textContent = result;
 });
